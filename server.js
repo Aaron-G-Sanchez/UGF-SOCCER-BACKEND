@@ -1,6 +1,6 @@
 const db = require('./db')
 const express = require('express')
-const routes = require('./routes')
+const PlayerRouter = require('./routes/PlayerRouter')
 const cors = require('cors')
 const logger = require('morgan')
 
@@ -12,7 +12,11 @@ app.use(cors())
 app.use(express.json())
 app.use(logger('dev'))
 
-app.use('/', routes)
+app.get('/', (req, res) => {
+  res.send('This is the root')
+})
+
+app.use('/players', PlayerRouter)
 
 db.on('error', console.error.bind(console, 'MongoDB connection error:'))
 
