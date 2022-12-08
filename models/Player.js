@@ -2,10 +2,10 @@ const { Schema } = require('mongoose')
 
 const Player = new Schema(
   {
-    name: { type: String, require: true },
-    position: { type: String, require: true },
-    number: { type: Number, require: true },
-    team: { type: String, require: true }
+    name: { type: String, required: true },
+    position: { type: String, required: true },
+    number: { type: Number, required: true },
+    team: { type: String, required: true }
   },
   { timestamps: true }
 )
