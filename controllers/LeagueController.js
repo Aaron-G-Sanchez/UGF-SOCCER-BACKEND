@@ -1,4 +1,5 @@
 const { League } = require('../models')
+const { Team } = require('../models')
 
 const GetLeagues = async (req, res) => {
   try {
@@ -43,8 +44,35 @@ const AddMembers = async (req, res) => {
   }
 }
 
+const AddTeam = async (req, res) => {
+  try {
+    const { id } = req.params
+    const { name, creator_id } = req.body
+    const newTeam = new Team({
+      name,
+      creator_id
+    })
+    await newTeam.save()
+    const league = await League.findByIdAndUpdate(
+      id,
+      {
+        $push: { teams_id: newTeam.creator_id }
+      },
+      { new: true }
+    )
+    if (league) {
+      return res.status(201).json({ league })
+    }
+    await newTeam.save()
+    return res.status(200).json({ newTeam })
+  } catch (error) {
+    return res.status(500).send(error.message)
+  }
+}
+
 module.exports = {
   GetLeagues,
   CreateLeague,
-  AddMembers
+  AddMembers,
+  AddTeam
 }

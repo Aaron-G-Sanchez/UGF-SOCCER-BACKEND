@@ -9,4 +9,6 @@ router.post('/', controllers.CreateLeague)
 
 router.put('/:id', controllers.AddMembers)
 
+router.put('/team/:id', controllers.AddTeam)
+
 module.exports = router
