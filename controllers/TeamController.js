@@ -10,9 +10,16 @@ const GetTeam = async (req, res) => {
   res.status(401).send({ status: 'Error', msg: 'No league with that id!' })
 }
 
+// currently gets team. now players need to be pushed into the team array
 const AddPlayer = async (req, res) => {
-  const { id } = req.body
-  const team = await Team.findById(id)
+  const { id, newPlayers } = req.body
+  const team = await Team.findByIdAndUpdate(
+    id,
+    {
+      $push: { players: newPlayers }
+    },
+    { new: true }
+  )
   if (team) {
     return res.status(200).json({ team })
   }
