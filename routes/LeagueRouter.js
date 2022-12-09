@@ -1,14 +1,34 @@
 const { Router } = require('express')
 const controllers = require('../controllers/LeagueController')
-
+const middleware = require('../middleware')
 const router = Router()
 
-router.get('/', controllers.GetLeagues)
+router.get(
+  '/',
+  middleware.stripToken,
+  middleware.verifyToken,
+  controllers.GetLeagues
+)
 
-router.post('/', controllers.CreateLeague)
+router.post(
+  '/',
+  middleware.stripToken,
+  middleware.verifyToken,
+  controllers.CreateLeague
+)
 
-router.put('/:id', controllers.AddMembers)
+router.put(
+  '/:id',
+  middleware.stripToken,
+  middleware.verifyToken,
+  controllers.AddMembers
+)
 
-router.put('/team/:id', controllers.AddTeam)
+router.put(
+  '/team/:id',
+  middleware.stripToken,
+  middleware.verifyToken,
+  controllers.AddTeam
+)
 
 module.exports = router

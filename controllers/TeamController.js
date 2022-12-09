@@ -7,7 +7,9 @@ const GetTeam = async (req, res) => {
   if (league) {
     return res.status(200).json({ league })
   }
-  res.status(401).send({ status: 'Error', msg: 'No league with that id!' })
+  return res
+    .status(401)
+    .send({ status: 'Error', msg: 'No league with that id!' })
 }
 
 const AddPlayer = async (req, res) => {
