@@ -3,10 +3,10 @@ const controllers = require('../controllers/LeagueController')
 
 const router = Router()
 
-router.get('/', (req, res) => {
-  res.send('This is the league router')
-})
+router.get('/', controllers.GetLeagues)
 
 router.post('/', controllers.CreateLeague)
+
+router.put('/:id', controllers.AddMembers)
 
 module.exports = router
