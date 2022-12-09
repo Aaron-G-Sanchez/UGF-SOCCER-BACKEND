@@ -1,19 +1,15 @@
 const { Team } = require('../models')
+const { League } = require('../models')
 
-const CreateTeam = async (req, res) => {
-  try {
-    const { name, creator_id } = req.body
-    const newTeam = new Team({
-      name,
-      creator_id
-    })
-    await newTeam.save()
-    return res.status(200).json({ newTeam })
-  } catch (error) {
-    return res.status(500).send(error.message)
+const GetTeams = async (req, res) => {
+  const { id } = req.params
+  const league = await League.findById(id).populate('teams_id')
+  if (league) {
+    return res.status(200).json({ league })
   }
+  res.status(401).send({ status: 'Error', msg: 'No league with that id!' })
 }
 
 module.exports = {
-  CreateTeam
+  GetTeams
 }

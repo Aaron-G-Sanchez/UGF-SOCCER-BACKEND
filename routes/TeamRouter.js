@@ -3,8 +3,6 @@ const controllers = require('../controllers/TeamController')
 
 const router = Router()
 
-router.get('/', (req, res) => {
-  res.send('This is the team route')
-})
+router.get('/:id', controllers.GetTeams)
 
 module.exports = router

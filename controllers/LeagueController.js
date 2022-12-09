@@ -56,7 +56,7 @@ const AddTeam = async (req, res) => {
     const league = await League.findByIdAndUpdate(
       id,
       {
-        $push: { teams_id: newTeam.creator_id }
+        $push: { teams_id: newTeam._id }
       },
       { new: true }
     )
