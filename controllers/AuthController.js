@@ -6,7 +6,19 @@ const Login = async (req, res) => {
     const user = await User.findOne({
       email: req.body.email
     })
-    return res.status(201).json({ user })
+    if (
+      user &&
+      (await middleware.comparePassword(user.passwordDigest, req.body.password))
+    ) {
+      let payload = {
+        id: user._id,
+        email: user.email
+      }
+      let token = middleware.createToken(payload)
+
+      return res.status(201).json({ user: payload, token })
+    }
+    return res.status(401).send({ status: 'Error', msg: 'Unathorized!' })
   } catch (error) {
     throw error
   }
