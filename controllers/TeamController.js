@@ -20,7 +20,7 @@ const AddPlayer = async (req, res) => {
       $push: { players: newPlayers }
     },
     { new: true }
-  )
+  ).populate('players')
   if (team) {
     return res.status(200).json({ team })
   }
