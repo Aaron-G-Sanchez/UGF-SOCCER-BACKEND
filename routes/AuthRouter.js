@@ -7,8 +7,7 @@ router.get('/', (req, res) => {
   res.send('this is the auth router')
 })
 
-router.post('/register', controllers.Register)
-
 router.get('/login', controllers.Login)
+router.post('/register', controllers.Register)
 
 module.exports = router
