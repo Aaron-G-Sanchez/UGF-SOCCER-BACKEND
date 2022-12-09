@@ -10,7 +10,6 @@ const GetTeam = async (req, res) => {
   res.status(401).send({ status: 'Error', msg: 'No league with that id!' })
 }
 
-// currently gets team. now players need to be pushed into the team array
 const AddPlayer = async (req, res) => {
   const { id, newPlayers } = req.body
   const team = await Team.findByIdAndUpdate(
@@ -20,6 +19,15 @@ const AddPlayer = async (req, res) => {
     },
     { new: true }
   )
+  if (team) {
+    return res.status(200).json({ team })
+  }
+  res.status(401).send({ status: 'Error', msg: 'No team with that id!' })
+}
+
+const GetTeamWithPlayers = async (req, res) => {
+  const { id } = req.params
+  const team = await Team.findById(id).populate('players')
   if (team) {
     return res.status(200).json({ team })
   }
@@ -43,5 +51,6 @@ const RemovePlayer = async (req, res) => {
 module.exports = {
   GetTeam,
   AddPlayer,
-  RemovePlayer
+  RemovePlayer,
+  GetTeamWithPlayers
 }
