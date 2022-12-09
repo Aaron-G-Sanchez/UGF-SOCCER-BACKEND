@@ -18,7 +18,7 @@ app.get('/', (req, res) => {
 })
 
 app.use('/players', PlayerRouter)
-app.use('/register', AuthRouter)
+app.use('/auth', AuthRouter)
 
 db.on('error', console.error.bind(console, 'MongoDB connection error:'))
 

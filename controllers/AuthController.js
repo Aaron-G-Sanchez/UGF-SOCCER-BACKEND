@@ -3,6 +3,10 @@ const middleware = require('../middleware')
 
 const Login = async (req, res) => {
   try {
+    const user = await User.findOne({
+      email: req.body.email
+    })
+    return res.status(201).json({ user })
   } catch (error) {
     throw error
   }
