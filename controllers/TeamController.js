@@ -26,7 +26,22 @@ const AddPlayer = async (req, res) => {
   res.status(401).send({ status: 'Error', msg: 'No team with that id!' })
 }
 
+const RemovePlayer = async (req, res) => {
+  const { id } = req.params
+  const { player } = req.body
+  const team = await Team.findByIdAndUpdate(
+    id,
+    { $pull: { players: player } },
+    { new: true }
+  )
+  if (team) {
+    return res.status(200).json({ team })
+  }
+  res.status(401).send({ status: 'Error', msg: 'No team with that id!' })
+}
+
 module.exports = {
   GetTeam,
-  AddPlayer
+  AddPlayer,
+  RemovePlayer
 }
