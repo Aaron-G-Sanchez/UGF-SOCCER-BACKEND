@@ -25,11 +25,6 @@ const GetLeagueById = async (req, res) => {
         }
       })
 
-    // this works exept for populating players on the team
-    // .populate('creator_id')
-    // .populate('members_id')
-    // .populate('teams_id')
-
     return res.status(200).json({ league })
   } catch (error) {
     return res.status(500).send(error.message)
@@ -85,7 +80,7 @@ const AddTeam = async (req, res) => {
         $push: { teams_id: newTeam._id }
       },
       { new: true }
-    )
+    ).populate('teams_id')
     if (league) {
       return res.status(201).json({ league })
     }
