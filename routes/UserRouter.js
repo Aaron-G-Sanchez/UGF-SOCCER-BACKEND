@@ -5,7 +5,7 @@ const middleware = require('../middleware')
 const router = Router()
 
 router.get(
-  '/',
+  '/:id',
   middleware.stripToken,
   middleware.verifyToken,
   controllers.GetUser
