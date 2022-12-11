@@ -4,6 +4,7 @@ const PlayerRouter = require('./routes/PlayerRouter')
 const AuthRouter = require('./routes/AuthRouter')
 const LeagueRouter = require('./routes/LeagueRouter')
 const TeamRouter = require('./routes/TeamRouter')
+const UserRouter = require('./routes/UserRouter')
 const cors = require('cors')
 const logger = require('morgan')
 
@@ -20,6 +21,7 @@ app.get('/', (req, res) => {
 })
 
 app.use('/auth', AuthRouter)
+app.use('/user', UserRouter)
 app.use('/players', PlayerRouter)
 app.use('/league', LeagueRouter)
 app.use('/team', TeamRouter)
