@@ -14,6 +14,22 @@ const GetLeagueById = async (req, res) => {
   try {
     const { id } = req.params
     const league = await League.findById(id)
+      .populate('creator_id')
+      .populate('members_id')
+      .populate('teams_id')
+      .populate({
+        path: 'teams_id',
+        populate: {
+          path: 'players',
+          model: 'Player'
+        }
+      })
+
+    // this works exept for populating players on the team
+    // .populate('creator_id')
+    // .populate('members_id')
+    // .populate('teams_id')
+
     return res.status(200).json({ league })
   } catch (error) {
     return res.status(500).send(error.message)
