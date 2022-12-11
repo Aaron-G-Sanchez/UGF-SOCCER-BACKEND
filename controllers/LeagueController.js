@@ -10,6 +10,16 @@ const GetLeagues = async (req, res) => {
   }
 }
 
+const GetLeagueById = async (req, res) => {
+  try {
+    const { id } = req.params
+    const league = await League.findById(id)
+    return res.status(200).json({ league })
+  } catch (error) {
+    return res.status(500).send(error.message)
+  }
+}
+
 const CreateLeague = async (req, res) => {
   try {
     const { name, creator_id, length } = req.body
@@ -72,6 +82,7 @@ const AddTeam = async (req, res) => {
 
 module.exports = {
   GetLeagues,
+  GetLeagueById,
   CreateLeague,
   AddMembers,
   AddTeam

@@ -10,6 +10,13 @@ router.get(
   controllers.GetLeagues
 )
 
+router.get(
+  '/:id',
+  middleware.stripToken,
+  middleware.verifyToken,
+  controllers.GetLeagueById
+)
+
 router.post(
   '/',
   middleware.stripToken,
