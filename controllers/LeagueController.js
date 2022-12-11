@@ -3,7 +3,7 @@ const { Team } = require('../models')
 
 const GetLeagues = async (req, res) => {
   try {
-    const leagues = await League.find()
+    const leagues = await League.find().populate('creator_id')
     return res.status(200).json({ leagues })
   } catch (error) {
     return res.status(500).send(error.message)
