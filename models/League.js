@@ -6,7 +6,7 @@ const League = new Schema(
     creator_id: { type: Schema.Types.ObjectId, ref: 'User', required: true },
     members_id: [{ type: Schema.Types.ObjectId, ref: 'User', required: false }],
     teams_id: [{ type: Schema.Types.ObjectId, ref: 'Team', required: false }],
-    length: { type: Number, required: true }
+    length: { type: Number, required: false }
   },
   { timestamps: true }
 )
