@@ -86,7 +86,15 @@ const AddTeam = async (req, res) => {
         $push: { teams_id: newTeam._id }
       },
       { new: true }
-    ).populate('teams_id')
+    )
+      .populate('teams_id')
+      .populate({
+        path: 'teams_id',
+        populate: {
+          path: 'creator_id',
+          model: 'User'
+        }
+      })
     if (league) {
       return res.status(201).json({ league })
     }
