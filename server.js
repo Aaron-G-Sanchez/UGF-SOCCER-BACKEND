@@ -28,6 +28,12 @@ app.use('/team', TeamRouter)
 
 db.on('error', console.error.bind(console, 'MongoDB connection error:'))
 
+app.use(express.static(`${__dirname}/client/build`))
+
+app.get('/*', (req, res) => {
+  res.sendFile(`${__dirname}/client/build/index.html`)
+})
+
 app.listen(PORT, () => {
   console.log(`Express server listending on ${PORT}`)
 })
