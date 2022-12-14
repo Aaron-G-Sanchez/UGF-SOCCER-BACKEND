@@ -19,10 +19,16 @@ const GetLeagueById = async (req, res) => {
       .populate('teams_id')
       .populate({
         path: 'teams_id',
-        populate: {
-          path: 'players',
-          model: 'Player'
-        }
+        populate: [
+          {
+            path: 'players',
+            model: 'Player'
+          },
+          {
+            path: 'creator_id',
+            model: 'User'
+          }
+        ]
       })
 
     return res.status(200).json({ league })
