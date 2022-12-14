@@ -20,8 +20,8 @@ router.get(
 )
 
 // When this id is inputed it needs to be the ID of the team rather than the league
-router.delete(
-  '/:id/:player',
+router.put(
+  '/:id',
   middleware.stripToken,
   middleware.verifyToken,
   controllers.RemovePlayer
