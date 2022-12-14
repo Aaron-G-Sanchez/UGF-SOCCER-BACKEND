@@ -37,13 +37,13 @@ const GetTeamWithPlayers = async (req, res) => {
 }
 
 const RemovePlayer = async (req, res) => {
-  const { id } = req.params
-  const { player } = req.body
+  const { id, player } = req.params
+  // const { player } = req.body
   const team = await Team.findByIdAndUpdate(
     id,
     { $pull: { players: player } },
     { new: true }
-  )
+  ).populate('players')
   if (team) {
     return res.status(200).json({ team })
   }
