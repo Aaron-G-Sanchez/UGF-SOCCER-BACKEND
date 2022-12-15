@@ -1,18 +1,17 @@
 <p align="center">
-  <!-- <img src="public/assets/images/beerbook_logo.svg" alt="title_logo"/> -->
+  <img src="./public/assets/images/UGF%20LOGO.png" alt="title_logo"/>
+
 </p>
 
 # <p align="center"> Welcome To UGF Soccer <p>
 
-### <p align="center"> A quick and easy fantasy soccer game for you and your friends. <p>
+### <p align="center"> A quick and easy fantasy soccer app for you and your friends. <p>
 
 #
 
 ### Date: 12/15/2022
 
 #### By: &nbsp;Aaron Sanchez | [LinkedIn](https://www.linkedin.com/in/aaron-g-sanchez) | [GitHub](https://github.com/Aaron-G-Sanchez)
-
-&nbsp;
 
 ---
 
@@ -24,7 +23,7 @@
 
 ### <p align="center">**_Technologies Used_**<p>
 
-<!-- ![Logos](public/assets/images/BeerBook_Logos_for_README.png) -->
+![Logos](./public/assets/images/tech-used.png)
 
 ---
 
@@ -34,16 +33,16 @@
 
 #### A Trello board was used to track development progress and can be viewed [here](https://trello.com/b/yRZRIBpz/ugf-soccer).
 
-<!-- #### The project itself was deployed with Heroku and can be viewed [here](https://beerbook-frontend.herokuapp.com/). -->
-
 ---
 
-<!-- ## ![screenshot](public/assets/images/Screen_Shot_BeerBook.png) -->
+## ![screenshot1](./public/assets/images/UGF%20login.png)
+
+## ![screenshot2](./public/assets/images/UGF%20team%20screen.png)
 
 ### **_Future Updates_**
 
-- [x] Deploy project
-- [ ] Add user follower functionallity
+- [ ] Deploy project
+- [ ] Add score and schedule
 - [ ] Responsive design to work for any screen
 
 ---
@@ -51,7 +50,5 @@
 ### **_Credits_**
 
 ##### General Assembly: [Choose Your Path](https://generalassemb.ly/)
-
-##### Favicon: [Flaticon.com](https://www.flaticon.com/free-icons/hop)
 
 ---
