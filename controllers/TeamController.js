@@ -54,9 +54,19 @@ const RemovePlayer = async (req, res) => {
   res.status(401).send({ status: 'Error', msg: 'No team with that id!' })
 }
 
+const DeleteTeam = async (req, res) => {
+  const { id } = req.params
+  const response = await Team.findByIdAndDelete(id)
+  if (response) {
+    return res.status(201).json({ response })
+  }
+  res.status(401).send({ status: 'Error', msg: 'No team with that id!' })
+}
+
 module.exports = {
   GetTeam,
   AddPlayer,
   RemovePlayer,
-  GetTeamWithPlayers
+  GetTeamWithPlayers,
+  DeleteTeam
 }

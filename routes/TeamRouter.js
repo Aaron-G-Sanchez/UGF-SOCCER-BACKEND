@@ -34,4 +34,11 @@ router.get(
   controllers.GetTeamWithPlayers
 )
 
+router.delete(
+  '/:id',
+  middleware.stripToken,
+  middleware.verifyToken,
+  controllers.DeleteTeam
+)
+
 module.exports = router
