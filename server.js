@@ -15,6 +15,7 @@ const app = express()
 app.use(cors())
 app.use(express.json())
 app.use(logger('dev'))
+app.use(express.static(`${__dirname}/client/build`))
 
 app.get('/', (req, res) => {
   res.send('This is the root')
@@ -27,8 +28,6 @@ app.use('/league', LeagueRouter)
 app.use('/team', TeamRouter)
 
 db.on('error', console.error.bind(console, 'MongoDB connection error:'))
-
-app.use(express.static(`${__dirname}/client/build`))
 
 app.get('/*', (req, res) => {
   res.sendFile(`${__dirname}/client/build/index.html`)
